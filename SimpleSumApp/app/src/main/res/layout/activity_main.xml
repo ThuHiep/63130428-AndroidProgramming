@@ -55,10 +55,13 @@
         android:layout_marginStart="169dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="129dp"
+        android:onClick="xulycong"
         android:text="Tính Tổng"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtb" />
+        app:layout_constraintTop_toBottomOf="@+id/edtb"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textView4"
@@ -71,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btnCong" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/edtkq"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
