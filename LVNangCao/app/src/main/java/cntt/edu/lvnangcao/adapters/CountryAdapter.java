@@ -18,9 +18,10 @@ public class CountryAdapter extends BaseAdapter {
     Context mContext;
     LayoutInflater mInflater;
 
-    public CountryAdapter(ArrayList<Country> listQG, Context mContext, LayoutInflater mInflater) {
-        ListQG = listQG;
+    public CountryAdapter( Context mContext,ArrayList<Country> listQG) {
         this.mContext = mContext;
+        ListQG = listQG;
+
         mInflater = LayoutInflater.from(mContext);
     }
 
@@ -42,9 +43,10 @@ public class CountryAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         CountryViewHolder viewreturn;
+        viewreturn = new CountryViewHolder();
         if(convertView==null)   {
            convertView= mInflater.inflate(R.layout.country_item,null);
-           viewreturn = new CountryViewHolder();
+
             viewreturn.textViewNationName=convertView.findViewById(R.id.tvTenQG);
             viewreturn.textViewPopulation=convertView.findViewById(R.id.tvsodan);
             viewreturn.imageViewFlag=convertView.findViewById(R.id.imglaco);
@@ -59,9 +61,9 @@ public class CountryAdapter extends BaseAdapter {
         int soDan = quocGia.getSoLuongDan();
         String tenLaCo = quocGia.getTenfileanhlaco();
         viewreturn.textViewNationName.setText(tenQG);
-        viewreturn.textViewPopulation.setText(soDan);
+        viewreturn.textViewPopulation.setText(String.valueOf(soDan));
         int idanhlaco = TimIDtheotenFile(tenLaCo);
-        
+
         viewreturn.imageViewFlag.setImageResource(idanhlaco);
         return convertView;
 
