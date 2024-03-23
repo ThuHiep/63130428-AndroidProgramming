@@ -1,22 +1,22 @@
 package cntt.edu.lvnangcao.model;
 
 public class Country {
-    String TenQG;
+    String tenQG;
     int soLuongDan;
-    String tenfileanhlaco;
+    String tenFileAnhLaCo;
 
-    public Country(String tenQG, int soLuongDan, String tenfileanhlaco) {
-        TenQG = tenQG;
+    public Country(String tenQG, int soLuongDan, String tenFileAnhLaCo) {
+        this.tenQG = tenQG;
         this.soLuongDan = soLuongDan;
-        this.tenfileanhlaco = tenfileanhlaco;
+        this.tenFileAnhLaCo = tenFileAnhLaCo;
     }
 
     public String getTenQG() {
-        return TenQG;
+        return tenQG;
     }
 
     public void setTenQG(String tenQG) {
-        TenQG = tenQG;
+        this.tenQG = tenQG;
     }
 
     public int getSoLuongDan() {
@@ -27,11 +27,11 @@ public class Country {
         this.soLuongDan = soLuongDan;
     }
 
-    public String getTenfileanhlaco() {
-        return tenfileanhlaco;
+    public String getTenFileAnhLaCo() {
+        return tenFileAnhLaCo;
     }
 
-    public void setTenfileanhlaco(String tenfileanhlaco) {
-        this.tenfileanhlaco = tenfileanhlaco;
+    public void setTenFileAnhLaCo(String tenFileAnhLaCo) {
+        this.tenFileAnhLaCo = tenFileAnhLaCo;
     }
 }

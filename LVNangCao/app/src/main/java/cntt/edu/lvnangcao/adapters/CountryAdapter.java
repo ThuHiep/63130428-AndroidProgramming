@@ -14,25 +14,25 @@ import cntt.edu.lvnangcao.R;
 import cntt.edu.lvnangcao.model.Country;
 
 public class CountryAdapter extends BaseAdapter {
-    ArrayList<Country> ListQG;
+    ArrayList<Country> listQG;
     Context mContext;
     LayoutInflater mInflater;
 
-    public CountryAdapter( Context mContext,ArrayList<Country> listQG) {
+    public CountryAdapter(Context mContext, ArrayList<Country> listQG) {
+        this.listQG = listQG;
         this.mContext = mContext;
-        ListQG = listQG;
-
         mInflater = LayoutInflater.from(mContext);
     }
 
+
     @Override
     public int getCount() {
-        return ListQG.size();
+        return listQG.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return ListQG.get(position);
+        return listQG.get(position);
     }
 
     @Override
@@ -42,38 +42,40 @@ public class CountryAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        CountryViewHolder viewreturn;
-        viewreturn = new CountryViewHolder();
-        if(convertView==null)   {
-           convertView= mInflater.inflate(R.layout.country_item,null);
+        CountryViewHolder viewItem;
+        viewItem = new CountryViewHolder();
+        if (convertView==null) {
+            convertView=  mInflater.inflate(R.layout.country_item,null);
 
-            viewreturn.textViewNationName=convertView.findViewById(R.id.tvTenQG);
-            viewreturn.textViewPopulation=convertView.findViewById(R.id.tvsodan);
-            viewreturn.imageViewFlag=convertView.findViewById(R.id.imglaco);
-
-           convertView.setTag(viewreturn);
+            viewItem.textViewNationName = convertView.findViewById(R.id.tvTenQG);
+            viewItem.textViewPopulation = convertView.findViewById(R.id.tvSoLuongDan);
+            viewItem.imageViewFlag = convertView.findViewById(R.id.imLaCo);
+            convertView.setTag(viewItem);
         }
         else {
-            viewreturn=(CountryViewHolder) convertView.getTag();
+            viewItem= (CountryViewHolder)convertView.getTag();
         }
-        Country quocGia = ListQG.get(position);
-        String tenQG = quocGia.getTenQG();
-        int soDan = quocGia.getSoLuongDan();
-        String tenLaCo = quocGia.getTenfileanhlaco();
-        viewreturn.textViewNationName.setText(tenQG);
-        viewreturn.textViewPopulation.setText(String.valueOf(soDan));
-        int idanhlaco = TimIDtheotenFile(tenLaCo);
-
-        viewreturn.imageViewFlag.setImageResource(idanhlaco);
+        // đặt dữ liệu lên view
+        Country quocGiaHienThi = listQG.get(position);
+        String tenQG= quocGiaHienThi.getTenQG();
+        int soDan = quocGiaHienThi.getSoLuongDan();
+        String tenLaCo = quocGiaHienThi.getTenFileAnhLaCo();
+        viewItem.textViewNationName.setText(tenQG);
+        viewItem.textViewPopulation.setText(String.valueOf(soDan));
+        // tim id file anh o day
+        int idAnhLaCo= TimIDAnhTheoTenFile(tenLaCo);  //=== bang  gi do
+        viewItem.imageViewFlag.setImageResource(idAnhLaCo);
         return convertView;
-
     }
-    int TimIDtheotenFile(String tenfileAnh){
+    int TimIDAnhTheoTenFile(String tenFileAnh) {
         String tenPak = mContext.getPackageName();
-        int id = mContext.getResources().getIdentifier(tenfileAnh,"mimap",tenPak);
+        int id = mContext.getResources().
+                getIdentifier(
+                        tenFileAnh,"mipmap",tenPak
+                );
         return id;
     }
-    static class CountryViewHolder{
+    static class CountryViewHolder {
         ImageView imageViewFlag;
         TextView textViewNationName;
         TextView textViewPopulation;
