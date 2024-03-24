@@ -40,12 +40,23 @@
         app:layout_constraintTop_toTopOf="@+id/pic" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/lowtxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="10"
+        android:textColor="@color/textcolor"
         app:layout_constraintBottom_toBottomOf="@+id/pic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/pic" />
+
+    <TextView
+        android:id="@+id/highttxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="20"
+        android:textColor="@color/textcolor"
+        app:layout_constraintBottom_toBottomOf="@+id/lowtxt"
+        app:layout_constraintEnd_toStartOf="@+id/lowtxt" />
 </androidx.constraintlayout.widget.ConstraintLayout>
