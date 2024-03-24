@@ -87,8 +87,9 @@ public class BMI_manhinhinput {
 		                double weight = Double.parseDouble(weightText);
 		                double height = Double.parseDouble(heightText);		        
 		                if (weight > 0 && height > 0) {
-		                	frame.setVisible(false);
-		        			BMI_manhinhketqua f = new BMI_manhinhketqua();
+		                	double bmi = weight / (height * height);
+		                	BMI_manhinhketqua f = new BMI_manhinhketqua(bmi);
+		                	frame.setVisible(false);		   
 		        			f.setVisible(true);
 		       
 		                } else {
@@ -109,12 +110,29 @@ public class BMI_manhinhinput {
 		frame.getContentPane().add(btncheck);
 		
 		btnreset = new JButton("RESET");
+		btnreset.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				txtweight.setText("");
+                txtheight.setText("");
+			}
+		});
 		btnreset.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnreset.setBackground(new Color(255, 128, 128));
 		btnreset.setBounds(266, 391, 134, 54);
 		frame.getContentPane().add(btnreset);
 		
 		btnExit = new JButton("EXIT");
+		btnExit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.exit(0);
+			}
+		});
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnExit.setBackground(new Color(255, 128, 128));
 		btnExit.setBounds(630, 391, 134, 54);
@@ -125,8 +143,5 @@ public class BMI_manhinhinput {
         
 	}
 
-	private void setVisible(boolean b) {
-		// TODO Auto-generated method stub
-		
-	}
+
 }
