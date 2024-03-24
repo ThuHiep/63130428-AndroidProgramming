@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -12,10 +13,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Color;
 
 public class BMI_manhinhinput {
 
 	private JFrame frame;
+	private JTextField txtweight;
+	private JTextField txtheight;
+	private JButton btnreset;
+	private JButton btnExit;
 	    
 
 	/**
@@ -46,44 +53,80 @@ public class BMI_manhinhinput {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 649, 490);
+		frame.setBounds(100, 100, 1001, 562);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("BMI CACULATE");
-		lblNewLabel.setFont(new Font("#9Slide01 Tieu de ngan", Font.ITALIC, 30));
-		lblNewLabel.setBounds(193, 10, 268, 74);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBackground(new Color(255, 128, 128));
+		Image img1 = new ImageIcon(this.getClass().getResource("/BMI.png")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(img1));
+		lblNewLabel.setBounds(10, 10, 977, 515);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Male");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(95, 197, 81, 33);
-		frame.getContentPane().add(lblNewLabel_1);
+		txtweight = new JTextField();
+		txtweight.setBounds(455, 193, 115, 38);
+		frame.getContentPane().add(txtweight);
+		txtweight.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Female");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_2.setBounds(450, 202, 71, 23);
-		frame.getContentPane().add(lblNewLabel_2);
+		txtheight = new JTextField();
+		txtheight.setBounds(455, 306, 115, 38);
+		frame.getContentPane().add(txtheight);
+		txtheight.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Enter your weight:");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_3.setBounds(150, 254, 172, 33);
-		frame.getContentPane().add(lblNewLabel_3);
+		JButton btncheck = new JButton("CHECK");
+		btncheck.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String weightText = txtweight.getText();
+		        String heightText = txtheight.getText();
+		        if (!weightText.isEmpty() && !heightText.isEmpty()) {
+		            try {
+		                double weight = Double.parseDouble(weightText);
+		                double height = Double.parseDouble(heightText);		        
+		                if (weight > 0 && height > 0) {
+		                	frame.setVisible(false);
+		        			BMI_manhinhketqua f = new BMI_manhinhketqua();
+		        			f.setVisible(true);
+		       
+		                } else {
+		                    JOptionPane.showMessageDialog(frame, "Invalid weight or height.");
+		                }
+		            } catch (NumberFormatException ex) {
+		                JOptionPane.showMessageDialog(frame, "Invalid input. Please enter valid numbers.");
+		            }
+		        } else {
+		            JOptionPane.showMessageDialog(frame, "Please enter weight and height.");
+		        }
+			}
+		});
+
+		btncheck.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btncheck.setBackground(new Color(255, 128, 128));
+		btncheck.setBounds(448, 391, 134, 54);
+		frame.getContentPane().add(btncheck);
 		
-		JLabel lblNewLabel_4 = new JLabel("Enter your height:");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_4.setBounds(150, 307, 172, 23);
-		frame.getContentPane().add(lblNewLabel_4);
+		btnreset = new JButton("RESET");
+		btnreset.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnreset.setBackground(new Color(255, 128, 128));
+		btnreset.setBounds(266, 391, 134, 54);
+		frame.getContentPane().add(btnreset);
 		
-		JButton btnNewButton = new JButton("CHECK");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		btnNewButton.setBounds(255, 354, 142, 67);
-		frame.getContentPane().add(btnNewButton);
+		btnExit = new JButton("EXIT");
+		btnExit.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnExit.setBackground(new Color(255, 128, 128));
+		btnExit.setBounds(630, 391, 134, 54);
+		frame.getContentPane().add(btnExit);
+		
 
    
         
-        // Components initialization
-        String[] weightUnits = {"Kilogram (kg)", "Pound (lb)"};
-        String[] pressureUnits = {"Pascal (Pa)", "Psi (psi)"};
+	}
+
+	private void setVisible(boolean b) {
+		// TODO Auto-generated method stub
+		
 	}
 }
