@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgrcolor"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -92,7 +92,7 @@
                             android:layout_height="34dp"
                             android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:src="@tools:sample/avatars"
+
                             app:srcCompat="@drawable/rain" />
 
                         <TextView
@@ -130,7 +130,7 @@
                             android:layout_height="34dp"
                             android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:src="@tools:sample/avatars"
+
                             app:srcCompat="@drawable/wind" />
 
                         <TextView
@@ -168,7 +168,7 @@
                             android:layout_height="34dp"
                             android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:src="@tools:sample/avatars"
+
                             app:srcCompat="@drawable/humidity" />
 
                         <TextView
@@ -222,14 +222,16 @@
                     android:textStyle="bold"
                     android:text="7 ngày tiếp theo" />
             </LinearLayout>
+
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/view1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:clipToPadding="false"
-                android:paddingLeft="24dp"
-                android:paddingRight="24dp"
 
-                android:layout_weight="1" />
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp" />
 
         </LinearLayout>
     </ScrollView>
