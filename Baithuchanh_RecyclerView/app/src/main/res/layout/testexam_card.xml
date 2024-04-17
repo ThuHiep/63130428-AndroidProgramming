@@ -17,20 +17,18 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
         android:id="@+id/examPic"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_below="@+id/examName"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toStartOf="@+id/examName"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/examName"
-        app:srcCompat="@drawable/clock"></ImageView>
+        app:srcCompat="@drawable/clock" />
 
     <TextView
         android:id="@+id/examDate"
@@ -43,22 +41,19 @@
         android:gravity="center"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/examName"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/examName"/>
+
 
     <ImageView
         android:id="@+id/examPic2"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_below="@+id/examName"
         android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/examMessage"
-        app:layout_constraintEnd_toStartOf="@+id/examName"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/examDate"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/st"></ImageView>
+        app:layout_constraintTop_toBottomOf="@+id/examPic"
+        app:srcCompat="@drawable/st" />
 
     <TextView
         android:id="@+id/examMessage"
