@@ -38,6 +38,7 @@ public class ActivityLogin extends AppCompatActivity {
                 String mail = edtmail.getText().toString();
                 if(user.equals("maicuongtho")&&pw.equals("123")&& checkEmail(mail)){
                     Intent intent = new Intent(ActivityLogin.this,ActivityHome.class);
+                    intent.putExtra("userName",user);
                     startActivity(intent);
 
                 }
