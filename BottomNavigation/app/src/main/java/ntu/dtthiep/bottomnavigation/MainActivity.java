@@ -31,30 +31,36 @@ public class MainActivity extends AppCompatActivity {
                 int itemId = item.getItemId();
 
                 if(itemId==R.id.navHome){
-                    LoadFragment(new HomeFragment());
+                    LoadFragment(new HomeFragment(),false);
 
                     
                 } else if (itemId==R.id.navSearch) {
-                    LoadFragment(new searchfragment());
+                    LoadFragment(new searchfragment(),false);
                     
                 } else if (itemId==R.id.navNot) {
-                    LoadFragment(new notififragment());
+                    LoadFragment(new notififragment(),false);
                     
                 }else {
-                    LoadFragment(new profilefragment());
+                    LoadFragment(new profilefragment(),false);
 
                 }
 
-                return false;
+                return true;
             }
         });
+        LoadFragment(new HomeFragment(),true);
 
     }
-    private void LoadFragment(Fragment fragment){
+    private void LoadFragment(Fragment fragment, boolean isAppInnitiallized){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.add(R.id.framelayout, fragment);
+        if(isAppInnitiallized){
+            fragmentTransaction.add(R.id.framelayout, fragment);
+        }
+        else {
+            fragmentTransaction.replace(R.id.framelayout, fragment);
+        }
         fragmentTransaction.commit();
     }
 }
