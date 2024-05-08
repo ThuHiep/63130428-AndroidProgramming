@@ -1,6 +1,8 @@
 package ntu.dtthiep.vidutaodatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -51,9 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Truy vấn select
         //B1: Mở csld
-        SQLiteDatabase db = openOrCreateDatabase("QuanLySach.db", // tên file = tên DB
-                MODE_PRIVATE,  // giới hạn truy cập
-                null          // con trỏ bản ghi
+        SQLiteDatabase db = openOrCreateDatabase("QuanLySach.db", MODE_PRIVATE, null
         );
         //B2: Thực thi câu lệnh select
         String sqlSelect ="Select * from Books;";
@@ -74,7 +74,24 @@ public class MainActivity extends AppCompatActivity {
             Book b = new Book(idSach,tenSach,soTrang,gia,mota);
             dsSach.add(b);
         }
-        
+
+        ArrayList<Book> books = new ArrayList<>();
+
+        if (cs.moveToFirst()) {
+            do {
+                int id = cs.getInt(0);
+                String name = cs.getString(1);
+                int pages = cs.getInt(2);
+                float price = cs.getFloat(3);
+                String description = cs.getString(4);
+                books.add(new Book(id, name, pages, price, description));
+            } while (cs.moveToNext());
+        }
+        BookAdapter adapter = new BookAdapter(this, books);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
 
     }
