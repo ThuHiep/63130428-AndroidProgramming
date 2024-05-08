@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -57,6 +59,23 @@ public class MainActivity extends AppCompatActivity {
         String sqlSelect ="Select * from Books;";
         Cursor cs = db.rawQuery(sqlSelect,null);
         cs.moveToFirst(); // đưa con trỏ bản ghi về hàng đầu tiên
+        // B3: Đổ vào biến nào đó để xử lý
+        // Xây dựng model/class cho bảng Books
+        // Tạo biến ArrayList<Book> dsSach;
+        ArrayList<Book> dsSach = new ArrayList<Book>();
+        // Duyệt qua lần lượt từng bản ghi và thêm vào danhSach
+        while (cs.moveToNext())
+        {
+            int idSach = cs.getInt(0);
+            String tenSach = cs.getString(1);
+            int soTrang = cs.getInt(2);
+            float gia = cs.getFloat(3);
+            String mota = cs.getString(4);
+            Book b = new Book(idSach,tenSach,soTrang,gia,mota);
+            dsSach.add(b);
+        }
+        
+
 
     }
 }
